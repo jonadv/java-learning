@@ -1,0 +1,408 @@
+|  Welcome to JShell -- Version 11.0.10
+|  For an introduction type: /help intro
+
+jshell> import java.util.*
+
+jshell> import java.text.*
+
+jshell> ResourceBundle msg = ResourceBundle.getBundle("messages", Locale.UK);
+msg ==> java.util.PropertyResourceBundle@6eebc39e
+
+jshell> String offerPattern = msg.getString("offer");
+offerPattern ==> "{0}, price: {1} (applied {2} discount), valid until {3}"
+
+jshell> dateFormat
+|  Error:
+|  cannot find symbol
+|    symbol:   variable dateFormat
+|  dateFormat
+|  ^--------^
+
+jshell> /list
+
+   1 : import java.util.*;
+   2 : import java.text.*;
+   3 : ResourceBundle msg = ResourceBundle.getBundle("messages", Locale.UK);
+   4 : String offerPattern = msg.getString("offer");
+
+jshell> msg
+msg ==> java.util.PropertyResourceBundle@6eebc39e
+
+jshell> msg.
+Unexpected character after Shift-Tab.
+Use "i" for auto-import, "v" for variable creation, or "m" for method creation.
+For more information see:
+/help shortcuts
+jshell> msg.v
+Unexpected character after Shift-Tab.
+Use "i" for auto-import, "v" for variable creation, or "m" for method creation.
+For more information see:
+/help shortcuts
+jshell> MessageFormat.format(offerPattern, "Tea", "$ 1.85", "6.5%", "tomorrow")
+$6 ==> "Tea, price: $ 1.85 (applied 6.5% discount), valid until tomorrow"
+
+jshell> ResourceBundle msg = ResourceBundle.getBundle("messages_nl_NL", Locale.NL);
+|  Error:
+|  cannot find symbol
+|    symbol:   variable NL
+|  ResourceBundle msg = ResourceBundle.getBundle("messages_nl_NL", Locale.NL);
+|                                                                  ^-------^
+
+jshell> Locale loc = Locale.NL_nl
+|  Error:
+|  cannot find symbol
+|    symbol:   variable NL_nl
+|  Locale loc = Locale.NL_nl;
+|               ^----------^
+
+jshell> ResourceBundle msg = ResourceBundle.getBundle("messages_nl_NL", Locale.UK);
+msg ==> java.util.PropertyResourceBundle@3f49dace
+
+jshell> MessageFormat.format(offerPattern, "Tea", "$ 1.85", "6.5%", "tomorrow")
+$8 ==> "Tea, price: $ 1.85 (applied 6.5% discount), valid until tomorrow"
+
+jshell> Locale loc = new Locale("NL", "nl")
+loc ==> nl_NL
+
+jshell> ResourceBundle msg = ResourceBundle.getBundle("messages_nl_NL", loc);
+msg ==> java.util.PropertyResourceBundle@3f49dace
+
+jshell> ResourceBundle msg = ResourceBundle.getBundle("messages", loc);
+msg ==> java.util.PropertyResourceBundle@6eebc39e
+
+jshell> ResourceBundle msg = ResourceBundle.getBundle("messages", loc);
+msg ==> java.util.PropertyResourceBundle@6eebc39e
+
+jshell> MessageFormat.format(offerPattern, "Tea", "$ 1.85", "6.5%", "morgen")
+$13 ==> "Tea, price: $ 1.85 (applied 6.5% discount), valid until morgen"
+
+jshell> msg = ResourceBundle.getBundle("messages", loc);
+msg ==> java.util.PropertyResourceBundle@6eebc39e
+
+jshell> offerPattern = msg.getString("offer");
+offerPattern ==> "{0}, price: {1} (applied {2} discount), valid until {3}"
+
+jshell> lo
+|  Error:
+|  cannot find symbol
+|    symbol:   variable lo
+|  lo
+|  ^^
+
+jshell> loc
+loc ==> nl_NL
+
+jshell>
+<press tab again to see all possible completions; total possible completions: 569>
+jshell> msg = ResourceBundle.getBundle("messages", loc);
+msg ==> java.util.PropertyResourceBundle@6eebc39e
+
+jshell> offerPattern = msg.getString("offer");
+offerPattern ==> "{0}, price: {1} (applied {2} discount), valid until {3}"
+
+jshell> /list
+
+   1 : import java.util.*;
+   2 : import java.text.*;
+   4 : String offerPattern = msg.getString("offer");
+   5 : msg
+   6 : MessageFormat.format(offerPattern, "Tea", "$ 1.85", "6.5%", "tomorrow")
+   8 : MessageFormat.format(offerPattern, "Tea", "$ 1.85", "6.5%", "tomorrow")
+   9 : Locale loc = new Locale("NL", "nl");
+  12 : ResourceBundle msg = ResourceBundle.getBundle("messages", loc);
+  13 : MessageFormat.format(offerPattern, "Tea", "$ 1.85", "6.5%", "morgen")
+  14 : msg = ResourceBundle.getBundle("messages", loc);
+  15 : offerPattern = msg.getString("offer");
+  16 : loc
+  17 : msg = ResourceBundle.getBundle("messages", loc);
+  18 : offerPattern = msg.getString("offer");
+
+jshell> msg = null
+msg ==> null
+
+jshell> msg
+msg ==> null
+
+jshell> msg = ResourceBundle.getBundle("messages", loc);
+msg ==> java.util.PropertyResourceBundle@6eebc39e
+
+jshell> msg.getString("offer");
+$22 ==> "{0}, price: {1} (applied {2} discount), valid until {3}"
+
+jshell> /rest
+|  Invalid command: /rest
+|  Type /help for help.
+
+jshell> /reset
+|  Resetting state.
+
+jshell> import java.util.*
+
+jshell> import java.text.*
+
+jshell> ResourceBundle mess = ResourceBundle.getBundle("messages", loc);
+|  Error:
+|  cannot find symbol
+|    symbol:   variable loc
+|  ResourceBundle mess = ResourceBundle.getBundle("messages", loc);
+|                                                             ^-^
+
+jshell> Locale loc = new Locale("nl", "NL");
+loc ==> nl_NL
+
+jshell>
+<press tab again to see all possible completions; total possible completions: 564>
+jshell> ResourceBundle mess = ResourceBundle.getBundle("messages", loc);
+mess ==> java.util.PropertyResourceBundle@464bee09
+
+jshell> msg
+|  Error:
+|  cannot find symbol
+|    symbol:   variable msg
+|  msg
+|  ^-^
+
+jshell> mess.getString("offer")
+$5 ==> "{0}, prijs: {1} ({2} korting toegepast), geldig tot {3}"
+
+jshell> MessageFormat.format(mess.getString("offer"), "Thee", "3.50 euro", "10%");
+$6 ==> "Thee, prijs: 3.50 euro (10% korting toegepast), geldig tot {3}"
+
+jshell> ResourceBundle mess = ResourceBundle.getBundle("messages", loc);
+mess ==> java.util.PropertyResourceBundle@464bee09
+
+jshell> MessageFormat.format(mess.getString("offer"), "Thee", "3.50 euro", "10%", mess.getString("date"));
+|  Exception java.util.MissingResourceException: Can't find resource for bundle java.util.PropertyResourceBundle, key date
+|        at ResourceBundle.getObject (ResourceBundle.java:564)
+|        at ResourceBundle.getString (ResourceBundle.java:521)
+|        at (#8:1)
+
+jshell>
+<press tab again to see all possible completions; total possible completions: 568>
+jshell> mess.getString("date")
+|  Exception java.util.MissingResourceException: Can't find resource for bundle java.util.PropertyResourceBundle, key date
+|        at ResourceBundle.getObject (ResourceBundle.java:564)
+|        at ResourceBundle.getString (ResourceBundle.java:521)
+|        at (#9:1)
+
+jshell> jshell>
+jshell> jshell>
+
+jshell> ResourceBundle mess2 = ResourceBundle.getBundle("messages", loc);
+mess2 ==> java.util.PropertyResourceBundle@464bee09
+
+jshell>
+<press tab again to see all possible completions; total possible completions: 570>
+jshell> mess.getString("date")
+|  Exception java.util.MissingResourceException: Can't find resource for bundle java.util.PropertyResourceBundle, key date
+|        at ResourceBundle.getObject (ResourceBundle.java:564)
+|        at ResourceBundle.getString (ResourceBundle.java:521)
+|        at (#11:1)
+
+jshell>
+
+jshell> mess.getString("offer")
+$12 ==> "{0}, prijs: {1} ({2} korting toegepast), geldig tot {3}"
+
+jshell> ResourceBundle mess2 = ResourceBundle.getBundle("messages", loc);
+mess2 ==> java.util.PropertyResourceBundle@464bee09
+
+jshell> mess2.getString("date")
+|  Exception java.util.MissingResourceException: Can't find resource for bundle java.util.PropertyResourceBundle, key date
+|        at ResourceBundle.getObject (ResourceBundle.java:564)
+|        at ResourceBundle.getString (ResourceBundle.java:521)
+|        at (#14:1)
+
+jshell> mess2.getString("wanneer")
+|  Exception java.util.MissingResourceException: Can't find resource for bundle java.util.PropertyResourceBundle, key wanneer
+|        at ResourceBundle.getObject (ResourceBundle.java:564)
+|        at ResourceBundle.getString (ResourceBundle.java:521)
+|        at (#15:1)
+
+jshell>
+<press tab again to see all possible completions; total possible completions: 574>
+jshell> ResourceBundle ms = ResourceBundle.getBundle("messages", loc);
+ms ==> java.util.PropertyResourceBundle@464bee09
+
+jshell> ms.getString("wanneer")
+|  Exception java.util.MissingResourceException: Can't find resource for bundle java.util.PropertyResourceBundle, key wanneer
+|        at ResourceBundle.getObject (ResourceBundle.java:564)
+|        at ResourceBundle.getString (ResourceBundle.java:521)
+|        at (#17:1)
+
+jshell> ms.getString("offer")
+$18 ==> "{0}, prijs: {1} ({2} korting toegepast), geldig tot {3}"
+
+jshell> /list
+
+   1 : import java.util.*;
+   2 : import java.text.*;
+   3 : Locale loc = new Locale("nl", "NL");
+   5 : mess.getString("offer")
+   6 : MessageFormat.format(mess.getString("offer"), "Thee", "3.50 euro", "10%");
+   7 : ResourceBundle mess = ResourceBundle.getBundle("messages", loc);
+   8 : MessageFormat.format(mess.getString("offer"), "Thee", "3.50 euro", "10%", mess.getString("date"));
+   9 : mess.getString("date")
+  11 : mess.getString("date")
+  12 : mess.getString("offer")
+  13 : ResourceBundle mess2 = ResourceBundle.getBundle("messages", loc);
+  14 : mess2.getString("date")
+  15 : mess2.getString("wanneer")
+  16 : ResourceBundle ms = ResourceBundle.getBundle("messages", loc);
+  17 : ms.getString("wanneer")
+  18 : ms.getString("offer")
+
+jshell> mess.getString("dateFormat")
+$19 ==> "EE', 'd' of 'MMMM yyyy' at 'HH:mm z"
+
+jshell> ms.getString("dateFormat")
+$20 ==> "EE', 'd' of 'MMMM yyyy' at 'HH:mm z"
+
+jshell> ResourceBundle ms = new  ResourceBundle.getBundle("messages", loc);
+|  Error:
+|  cannot find symbol
+|    symbol:   class getBundle
+|  ResourceBundle ms = new  ResourceBundle.getBundle("messages", loc);
+|                           ^----------------------^
+
+jshell> ResourceBundle ms1 = new ResourceBundle.getBundle("messages", loc);
+|  Error:
+|  cannot find symbol
+|    symbol:   class getBundle
+|  ResourceBundle ms1 = new ResourceBundle.getBundle("messages", loc);
+|                           ^----------------------^
+
+jshell> ms = null
+|  Error:
+|  cannot find symbol
+|    symbol:   variable ms
+|  ms = null
+|  ^^
+
+jshell> ms
+|  Error:
+|  cannot find symbol
+|    symbol:   variable ms
+|  ms
+|  ^^
+
+jshell> ms
+|  Error:
+|  cannot find symbol
+|    symbol:   variable ms
+|  ms
+|  ^^
+
+jshell> ms1
+|  Error:
+|  cannot find symbol
+|    symbol:   variable ms1
+|  ms1
+|  ^-^
+
+jshell> ms = 1
+|  Error:
+|  cannot find symbol
+|    symbol:   variable ms
+|  ms = 1
+|  ^^
+
+jshell> String ms = "1"
+ms ==> "1"
+
+jshell> ResourceBundle ms = ResourceBundle.getBundle("messages", loc);
+ms ==> java.util.PropertyResourceBundle@464bee09
+
+jshell> ms.getString("wanneer");
+|  Exception java.util.MissingResourceException: Can't find resource for bundle java.util.PropertyResourceBundle, key wanneer
+|        at ResourceBundle.getObject (ResourceBundle.java:564)
+|        at ResourceBundle.getString (ResourceBundle.java:521)
+|        at (#23:1)
+
+jshell> /reset
+|  Resetting state.
+
+jshell> ResourceBundle ms = ResourceBundle.getBundle("messages", loc);
+|  Error:
+|  cannot find symbol
+|    symbol:   variable loc
+|  ResourceBundle ms = ResourceBundle.getBundle("messages", loc);
+|                                                           ^-^
+
+jshell> /lis
+
+jshell> /list
+
+jshell> import java.util.*
+
+jshell> ResourceBundle ms = ResourceBundle.getBundle("messages", loc);
+|  Error:
+|  cannot find symbol
+|    symbol:   variable loc
+|  ResourceBundle ms = ResourceBundle.getBundle("messages", loc);
+|                                                           ^-^
+
+jshell>
+<press tab again to see all possible completions; total possible completions: 539>
+jshell> Locale loc = new Locale("nl", "NL");
+loc ==> nl_NL
+
+jshell> ResourceBundle ms = ResourceBundle.getBundle("messages", loc);
+ms ==> java.util.PropertyResourceBundle@464bee09
+
+jshell> ms.getString("offer");
+$4 ==> "{0}, prijs: {1} ({2} korting toegepast), geldig tot {3}"
+
+jshell> ms.getString("wanneer");
+$5 ==> "morgen"
+
+jshell> MessageFormat.format(ms.getString("offer"), "Thee", "3.50 euro", "10%", getString("wanneer"));
+|  Error:
+|  cannot find symbol
+|    symbol:   variable MessageFormat
+|  MessageFormat.format(ms.getString("offer"), "Thee", "3.50 euro", "10%", getString("wanneer"));
+|  ^-----------^
+|  Error:
+|  cannot find symbol
+|    symbol:   method getString(java.lang.String)
+|  MessageFormat.format(ms.getString("offer"), "Thee", "3.50 euro", "10%", getString("wanneer"));
+|                                                                          ^-------^
+
+jshell> MessageFormat.format(ms.getString("offer"), "Thee", "3.50 euro", "10%", ms.getString("wanneer"));
+|  Error:
+|  cannot find symbol
+|    symbol:   variable MessageFormat
+|  MessageFormat.format(ms.getString("offer"), "Thee", "3.50 euro", "10%", ms.getString("wanneer"));
+|  ^-----------^
+
+jshell> import java.text.*
+
+jshell> MessageFormat.format(ms.getString("offer"), "Thee", "3.50 euro", "10%", ms.getString("wanneer"));
+$7 ==> "Thee, prijs: 3.50 euro (10% korting toegepast), geldig tot morgen"
+
+jshell>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,326 @@
+|  Welcome to JShell -- Version 11.0.10
+|  For an introduction type: /help intro
+
+jshell> double price = 1.85;
+price ==> 1.85
+
+jshell> double rate = 0.065; price -= price*rate;
+rate ==> 0.065
+$3 ==> 1.7297500000000001
+
+jshell> price = Math.round(price*100)/100.0;
+price ==> 1.73
+
+jshell> BigDecimal a = 1;
+|  Error:
+|  incompatible types: int cannot be converted to java.math.BigDecimal
+|  BigDecimal a = 1;
+|                 ^
+
+jshell> import java.math.BigDecimal; import java.math.RoundingMode;
+
+jshell> BigDecimal a = 1;
+|  Error:
+|  incompatible types: int cannot be converted to java.math.BigDecimal
+|  BigDecimal a = 1;
+|                 ^
+
+jshell> BigDecimal price = valueOf(price);
+|  Error:
+|  cannot find symbol
+|    symbol:   method valueOf(java.math.BigDecimal)
+|  BigDecimal price = valueOf(price);
+|                     ^-----^
+
+jshell> price
+|  Error:
+|  cannot find symbol
+|    symbol:   variable price
+|  price
+|  ^---^
+
+jshell> price;
+|  Error:
+|  cannot find symbol
+|    symbol:   variable price
+|  price;
+|  ^---^
+
+jshell> double price = 1.85;
+price ==> 1.85
+
+jshell> price;
+price ==> 1.85
+
+jshell> BigDecimal price = valueOf(price);
+|  Error:
+|  cannot find symbol
+|    symbol:   method valueOf(java.math.BigDecimal)
+|  BigDecimal price = valueOf(price);
+|                     ^-----^
+
+jshell> price;
+|  Error:
+|  cannot find symbol
+|    symbol:   variable price
+|  price;
+|  ^---^
+
+jshell> double price = 1.85;
+price ==> 1.85
+
+jshell> BigDecimal price = BigDecimal.valueOf(price);
+|  Error:
+|  no suitable method found for valueOf(java.math.BigDecimal)
+|      method java.math.BigDecimal.valueOf(long) is not applicable
+|        (argument mismatch; java.math.BigDecimal cannot be converted to long)
+|      method java.math.BigDecimal.valueOf(double) is not applicable
+|        (argument mismatch; java.math.BigDecimal cannot be converted to double)
+|  BigDecimal price = BigDecimal.valueOf(price);
+|                     ^----------------^
+
+jshell> price;
+|  Error:
+|  cannot find symbol
+|    symbol:   variable price
+|  price;
+|  ^---^
+
+jshell> double price = 1.85;
+price ==> 1.85
+
+jshell> BigDecimal price = new BigDecimal.valueOf(price);
+|  Error:
+|  cannot find symbol
+|    symbol:   class valueOf
+|  BigDecimal price = new BigDecimal.valueOf(price);
+|                         ^----------------^
+
+jshell> price
+|  Error:
+|  cannot find symbol
+|    symbol:   variable price
+|  price
+|  ^---^
+
+jshell> double price = 1.85;
+price ==> 1.85
+
+jshell> BigDecimal price = BigDecimal.valueOf(1.85);
+price ==> 1.85
+
+jshell> price
+price ==> 1.85
+
+jshell> double priceD = 1.85;
+priceD ==> 1.85
+
+jshell> price == priceD;
+|  Error:
+|  bad operand types for binary operator '=='
+|    first type:  java.math.BigDecimal
+|    second type: double
+|  price == priceD;
+|  ^-------------^
+
+jshell> price.valueOf() = priceD
+|  Error:
+|  no suitable method found for valueOf(no arguments)
+|      method java.math.BigDecimal.valueOf(long,int) is not applicable
+|        (actual and formal argument lists differ in length)
+|      method java.math.BigDecimal.valueOf(long) is not applicable
+|        (actual and formal argument lists differ in length)
+|      method java.math.BigDecimal.valueOf(long,int,int) is not applicable
+|        (actual and formal argument lists differ in length)
+|      method java.math.BigDecimal.valueOf(java.math.BigInteger,int,int) is not applicable
+|        (actual and formal argument lists differ in length)
+|      method java.math.BigDecimal.valueOf(double) is not applicable
+|        (actual and formal argument lists differ in length)
+|  price.valueOf() = priceD
+|  ^-----------^
+
+jshell>
+<press tab again to see all possible completions; total possible completions: 545>
+jshell> price.valueOf() ==  priceD
+|  Error:
+|  no suitable method found for valueOf(no arguments)
+|      method java.math.BigDecimal.valueOf(long,int) is not applicable
+|        (actual and formal argument lists differ in length)
+|      method java.math.BigDecimal.valueOf(long) is not applicable
+|        (actual and formal argument lists differ in length)
+|      method java.math.BigDecimal.valueOf(long,int,int) is not applicable
+|        (actual and formal argument lists differ in length)
+|      method java.math.BigDecimal.valueOf(java.math.BigInteger,int,int) is not applicable
+|        (actual and formal argument lists differ in length)
+|      method java.math.BigDecimal.valueOf(double) is not applicable
+|        (actual and formal argument lists differ in length)
+|  price.valueOf() ==  priceD
+|  ^-----------^
+
+jshell> price
+price ==> 1.85
+
+jshell> priceD
+priceD ==> 1.85
+
+jshell> price - priceD
+|  Error:
+|  bad operand types for binary operator '-'
+|    first type:  java.math.BigDecimal
+|    second type: double
+|  price - priceD
+|  ^------------^
+
+jshell> price.equals(priceD);
+$17 ==> false
+
+jshell> price.valueOf() == priceD;
+|  Error:
+|  no suitable method found for valueOf(no arguments)
+|      method java.math.BigDecimal.valueOf(long,int) is not applicable
+|        (actual and formal argument lists differ in length)
+|      method java.math.BigDecimal.valueOf(long) is not applicable
+|        (actual and formal argument lists differ in length)
+|      method java.math.BigDecimal.valueOf(long,int,int) is not applicable
+|        (actual and formal argument lists differ in length)
+|      method java.math.BigDecimal.valueOf(java.math.BigInteger,int,int) is not applicable
+|        (actual and formal argument lists differ in length)
+|      method java.math.BigDecimal.valueOf(double) is not applicable
+|        (actual and formal argument lists differ in length)
+|  price.valueOf() == priceD;
+|  ^-----------^
+
+jshell> price == priceD;'
+|  Error:
+|  unclosed character literal
+|  price == priceD;'
+|                  ^
+|  Error:
+|  bad operand types for binary operator '=='
+|    first type:  java.math.BigDecimal
+|    second type: double
+|  price == priceD;'
+|  ^-------------^
+|  Error:
+|  missing return statement
+|  price == priceD;'
+|  ^---------------^
+
+jshell> price.doubleValue() == priceD;
+$18 ==> true
+
+jshell> price.intValue() == (int) priceD
+$19 ==> true
+
+jshell> BigDecimal rate = BigDecimal.valueOf(0.065);
+rate ==> 0.065
+
+jshell> price = price - rate
+|  Error:
+|  bad operand types for binary operator '-'
+|    first type:  java.math.BigDecimal
+|    second type: java.math.BigDecimal
+|  price = price - rate
+|          ^----------^
+
+jshell> price = price.substract(price.multiply(rate)).setScale(2,RoundingMode.HALF_UP));
+|  Error:
+|  ';' expected
+|  price = price.substract(price.multiply(rate)).setScale(2,RoundingMode.HALF_UP));
+|                                                                                ^
+|  Error:
+|  cannot find symbol
+|    symbol:   method substract(java.math.BigDecimal)
+|  price = price.substract(price.multiply(rate)).setScale(2,RoundingMode.HALF_UP));
+|          ^-------------^
+
+jshell> price = price.subtract(price.multiply(rate)).setScale(2,RoundingMode.HALF_UP));
+|  Error:
+|  ';' expected
+|  price = price.subtract(price.multiply(rate)).setScale(2,RoundingMode.HALF_UP));
+|                                                                               ^
+
+jshell> price = price.subtract(price.multiply(rate)).setScale(2,RoundingMode.HALF_UP);
+price ==> 1.73
+
+jshell>
+<press tab again to see all possible completions; total possible completions: 548>
+jshell> price = price.subtract(price.multiply(rate)).setScale(2,RoundingMode.HALF_UP);
+price ==> 1.62
+
+jshell> price = price.add(price.multiply(rate)).setScale(2,RoundingMode.HALF_UP);
+price ==> 1.73
+
+jshell> price = price.add(price.multiply(rate)).setScale(2,RoundingMode.HALF_UP);
+price ==> 1.84
+
+jshell> price
+price ==> 1.84
+
+jshell> price.add(0.01);
+|  Error:
+|  incompatible types: double cannot be converted to java.math.BigDecimal
+|  price.add(0.01);
+|            ^--^
+
+jshell>
+
+jshell> price.add(BigDecimal.valueOf(0.01));
+$26 ==> 1.85
+
+jshell> Locale loc = Locase.FRANCE;
+|  Error:
+|  cannot find symbol
+|    symbol:   variable Locase
+|  Locale loc = Locase.FRANCE;
+|               ^----^
+
+jshell>
+
+jshell> Locale loc = Locace.FRANCE;
+|  Error:
+|  cannot find symbol
+|    symbol:   variable Locace
+|  Locale loc = Locace.FRANCE;
+|               ^----^
+
+jshell>
+
+jshell> Locale loc = Locale.FRANCE;
+loc ==> fr_FR
+
+jshell> import java.text.NumberFormat;
+
+jshell> import java.util.Locale;
+
+jshell> NumberFormat curF = NumberFormat.getCurrencyInstance(locale);
+|  Error:
+|  cannot find symbol
+|    symbol:   variable locale
+|  NumberFormat curF = NumberFormat.getCurrencyInstance(locale);
+|                                                       ^----^
+
+jshell>
+
+jshell> NumberFormat curF = NumberFormat.getCurrencyInstance(loc);
+curF ==> java.text.DecimalFormat@674dc
+
+jshell> curF.format(priceD);
+$31 ==> "1,85 ?"
+
+jshell> curF.format(price);
+$32 ==> "1,84 ?"
+
+jshell> loc = Locale.UK
+loc ==> en_GB
+
+jshell> curF = NumberFormat.getCurrencyInstance(loc);
+curF ==> java.text.DecimalFormat@6757f
+
+jshell> String priceT = curF.format(price);
+priceT ==> "£1.84"
+
+jshell>
+<press tab again to see all possible completions; total possible completions: 556>
+jshell> String priceT = curF.format(priceD);
+priceT ==> "£1.85"

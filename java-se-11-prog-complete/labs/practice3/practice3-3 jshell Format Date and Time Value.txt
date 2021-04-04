@@ -1,0 +1,170 @@
+|  Welcome to JShell -- Version 11.0.10
+|  For an introduction type: /help intro
+
+jshell> import java.time.*
+
+jshell> LocalDate today = LocalDate.now();
+today ==> 2021-04-04
+
+jshell> today.plusYears(1).getDayOfWeek();
+$3 ==> MONDAY
+
+jshell> toda.getDayOfWeek();
+|  Error:
+|  cannot find symbol
+|    symbol:   variable toda
+|  toda.getDayOfWeek();
+|  ^--^
+
+jshell> today.getDayOfWeek();
+$4 ==> SUNDAY
+
+jshell> LocalTime teaTime = LocalTime.of(17,30);
+teaTime ==> 17:30
+
+jshell> Duration timeGap = Duration.between(LocalTime.now(), teaTime);
+timeGap ==> PT-50M-17.9132997S
+
+jshell> LocalTime.now()
+$7 ==> 18:20:39.557409300
+
+jshell> Duration timeGap = Duration.between(LocalTime.now(), LocalTime.of(17,2));
+timeGap ==> PT-1H-19M-29.7950226S
+
+jshell>
+
+jshell> Duration timeGap = Duration.between(teaTime, LocalTime.of(17,2));
+timeGap ==> PT-28M
+
+jshell> timeGap.toMinutes();
+$10 ==> -28
+
+jshell> timeGap.toHours();
+$11 ==> 0
+
+jshell>
+
+jshell> Duration timeGap = Duration.between(LocalTime.now(), teaTime);
+timeGap ==> PT-52M-20.6757516S
+
+jshell> timeGap.toHours();
+$13 ==> 0
+
+jshell> timeGap.toMinutes();
+$14 ==> -52
+
+jshell> LocalDateTime tomTeaTime = LocalDateTime.of(today.plusDays(1), teaTime);
+tomTeaTime ==> 2021-04-05T17:30
+
+jshell>
+<press tab again to see all possible completions; total possible completions: 568>
+jshell> Duration timeGap = Duration.between(LocalTime.now(), tomTeaTime);
+timeGap ==> PT-54M-47.0832349S
+
+jshell> timeGap.toHours();
+$17 ==> 0
+
+jshell>
+<press tab again to see all possible completions; total possible completions: 569>
+jshell> Duration timeGap = Duration.between(LocalDateTime.now(), tomTeaTime);
+timeGap ==> PT23H2M32.9748503S
+
+jshell> timeGap.toHours();
+$19 ==> 23
+
+jshell> /list
+
+   1 : import java.time.*;
+   2 : LocalDate today = LocalDate.now();
+   3 : today.plusYears(1).getDayOfWeek();
+   4 : today.getDayOfWeek();
+   5 : LocalTime teaTime = LocalTime.of(17,30);
+   7 : LocalTime.now()
+  10 : timeGap.toMinutes();
+  11 : timeGap.toHours();
+  13 : timeGap.toHours();
+  14 : timeGap.toMinutes();
+  15 : LocalDateTime tomTeaTime = LocalDateTime.of(today.plusDays(1), teaTime);
+  17 : timeGap.toHours();
+  18 : Duration timeGap = Duration.between(LocalDateTime.now(), tomTeaTime);
+  19 : timeGap.toHours();
+
+jshell> ZoneId london = ZoneId.of("Europe/London");
+london ==> Europe/London
+
+jshell> ZoneId kam = ZoneId.of("Asia/Katmandu");
+kam ==> Asia/Katmandu
+
+jshell> ZonedDateTime londonTime = ZonedDateTime.of(tomTeaTime, london);
+londonTime ==> 2021-04-05T17:30+01:00[Europe/London]
+
+jshell> ZonedDateTime londonTime = ZonedDateTime.of(tomTeaTime, kam);
+londonTime ==> 2021-04-05T17:30+05:45[Asia/Katmandu]
+
+jshell> ZonedDateTime londonTime = ZonedDateTime.of(tomTeaTime, london);
+londonTime ==> 2021-04-05T17:30+01:00[Europe/London]
+
+jshell> ZonedDateTime kamTime = ZonedDateTime.of(tomTeaTime, kam);
+kamTime ==> 2021-04-05T17:30+05:45[Asia/Katmandu]
+
+jshell> ZonedDateTime kamTime = londonTime.withZoneSameInstant(kam);
+kamTime ==> 2021-04-05T22:15+05:45[Asia/Katmandu]
+
+jshell> kamime.getOffset();
+|  Error:
+|  cannot find symbol
+|    symbol:   variable kamime
+|  kamime.getOffset();
+|  ^----^
+
+jshell> kamTime.getOffset();
+$27 ==> +05:45
+
+jshell> String datePattern = "EE", 'd' of 'MMMM yyyy' at 'HH:mm z';
+|  Error:
+|  <identifier> expected
+|  String datePattern = "EE", 'd' of 'MMMM yyyy' at 'HH:mm z';
+|                            ^
+
+jshell> import java.time.format.DateTimeFormatter;
+
+jshell> String datePattern = "EE", 'd' of 'MMMM yyyy' at 'HH:mm z';
+|  Error:
+|  <identifier> expected
+|  String datePattern = "EE", 'd' of 'MMMM yyyy' at 'HH:mm z';
+|                            ^
+
+jshell> String datePattern = "EE', 'd' of 'MMMM yyyy' at 'HH:mm z";
+datePattern ==> "EE', 'd' of 'MMMM yyyy' at 'HH:mm z"
+
+jshell> locale
+|  Error:
+|  cannot find symbol
+|    symbol:   variable locale
+|  locale
+|  ^----^
+
+jshell> loc
+|  Error:
+|  cannot find symbol
+|    symbol:   variable loc
+|  loc
+|  ^-^
+
+jshell> Locale loc = Locale.UK;
+loc ==> en_GB
+
+jshell> DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern(datePatter, loc);
+|  Error:
+|  cannot find symbol
+|    symbol:   variable datePatter
+|  DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern(datePatter, loc);
+|                                                             ^--------^
+
+jshell>
+<press tab again to see all possible completions; total possible completions: 578>
+jshell> DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern(datePattern, loc);
+dateFormat ==> Text(DayOfWeek,SHORT)', 'Value(DayOfMonth)' of 'T ... fHour,2)' 'ZoneText(SHORT)
+
+jshell> String timeTxt = dateFormat.format(kamTime);
+timeTxt ==> "Mon, 5 of April 2021 at 22:15 NPT"

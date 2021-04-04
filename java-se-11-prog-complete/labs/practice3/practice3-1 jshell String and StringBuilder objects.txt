@@ -1,0 +1,143 @@
+|  Welcome to JShell -- Version 11.0.10
+|  For an introduction type: /help intro
+
+jshell> b
+|  Error:
+|  cannot find symbol
+|    symbol:   variable b
+|  b
+|  ^
+
+jshell> String teaTxt = "Tea";
+teaTxt ==> "Tea"
+
+jshell> String b = "Tea";
+b ==> "Tea"
+
+jshell> b == teaTxt;
+$3 ==> true
+
+jshell> String c = new String("Tea");
+c ==> "Tea"
+
+jshell> teaTxt == c;
+$5 ==> false
+
+jshell> c.intern();
+$6 ==> "Tea"
+
+jshell> teaTxt == c;
+$7 ==> false
+
+jshell> String d = c.intern();
+d ==> "Tea"
+
+jshell> teaTxt == d;
+$9 ==> true
+
+jshell> b == teaTxt;
+$10 ==> true
+
+jshell> b == c.intern();
+$11 ==> true
+
+jshell> d == c;
+$12 ==> false
+
+jshell> d == b;
+$13 ==> true
+
+jshell> c = teaTxt+' '+b;
+c ==> "Tea Tea"
+
+jshell> c.indexOf('T',1);
+$15 ==> 4
+
+jshell> c.indexOf('T', 0);
+$16 ==> 0
+
+jshell> c.charAt(c.length()-1);
+$17 ==> 'a'
+
+jshell> c.toUppercase();
+|  Error:
+|  cannot find symbol
+|    symbol:   method toUppercase()
+|  c.toUppercase();
+|  ^-----------^
+
+jshell> c.toUpperCase();
+$18 ==> "TEA TEA"
+
+jshell> c
+c ==> "Tea Tea"
+
+jshell> c.subString(c.lastIndexOf('T'), c.lastIndexOf('T') +2);
+|  Error:
+|  cannot find symbol
+|    symbol:   method subString(int,int)
+|  c.subString(c.lastIndexOf('T'), c.lastIndexOf('T') +2);
+|  ^---------^
+
+jshell> c.lastIndexOf('T');
+$20 ==> 4
+
+jshell> c.subString(4,6);
+|  Error:
+|  cannot find symbol
+|    symbol:   method subString(int,int)
+|  c.subString(4,6);
+|  ^---------^
+
+jshell> c.subString((int)4,(int)6);
+|  Error:
+|  cannot find symbol
+|    symbol:   method subString(int,int)
+|  c.subString((int)4,(int)6);
+|  ^---------^
+
+jshell> c.subString(4,2);
+|  Error:
+|  cannot find symbol
+|    symbol:   method subString(int,int)
+|  c.subString(4,2);
+|  ^---------^
+
+jshell> c
+c ==> "Tea Tea"
+
+jshell> c.subString(1,2);
+|  Error:
+|  cannot find symbol
+|    symbol:   method subString(int,int)
+|  c.subString(1,2);
+|  ^---------^
+
+jshell> c.substring(4,6);
+$22 ==> "Te"
+
+jshell> StringBuilder txt = new StringBuilder(c);
+txt ==> Tea Tea
+
+jshell> StringBuilder txtb = c;
+|  Error:
+|  incompatible types: java.lang.String cannot be converted to java.lang.StringBuilder
+|  StringBuilder txtb = c;
+|                       ^
+
+jshell> txt.length();
+$24 ==> 7
+
+jshell> txt.capacity();
+$25 ==> 23
+
+jshell> txt.replace(0,3,"What is the price of");
+$26 ==> What is the price of Tea
+
+jshell>
+<press tab again to see all possible completions; total possible completions: 562>
+jshell> txt.length();
+$27 ==> 24
+
+jshell> txt.capacity();
+$28 ==> 48
