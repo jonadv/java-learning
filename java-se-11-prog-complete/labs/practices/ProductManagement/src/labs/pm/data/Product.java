@@ -17,6 +17,8 @@
 package labs.pm.data;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import static java.math.RoundingMode.HALF_UP;
 
 /**
  *
@@ -27,12 +29,13 @@ public class Product {
     private int id;
     private String name;
     private BigDecimal price;
+    public final static BigDecimal DISCOUNT_RATE = BigDecimal.valueOf(0.10);
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
@@ -40,7 +43,7 @@ public class Product {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -48,8 +51,11 @@ public class Product {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(final BigDecimal price) {
         this.price = price;
     }
 
+    public BigDecimal getDiscount() {
+        return price.multiply(DISCOUNT_RATE).setScale(2, HALF_UP);
+    }
 }
