@@ -34,9 +34,9 @@ import static labs.pm.data.Rating.*;
  */
 public class Product {
 
-    private int id;
-    private String name;
-    private BigDecimal price;
+    private final int id;
+    private final String name;
+    private final BigDecimal price;
     /**
      * A constant that defines a {@link java.math.BigDecimal BigDecimal} value
      * of the discount rate
@@ -50,24 +50,12 @@ public class Product {
         return id;
     }
 
-    public void setId(final int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(final String name) {
-        this.name = name;
-    }
-
     public BigDecimal getPrice() {
         return price;
-    }
-
-    public void setPrice(final BigDecimal price) {
-        this.price = price;
     }
 
     /**
@@ -97,6 +85,10 @@ public class Product {
 
     public Product(int id, String name, BigDecimal price) {
         this(id, name, price, NOT_RATED);
+    }
+
+    public Product applyRating(Rating newRating) {
+        return new Product(id, name, price, newRating);
     }
 
 }
