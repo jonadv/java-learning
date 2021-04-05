@@ -17,26 +17,19 @@
 package labs.pm.data;
 
 import java.math.BigDecimal;
-import java.time.LocalTime;
+import java.time.LocalDate;
 
 /**
  *
  * @author Jonathan
  */
-public final class Drink extends Product {
+public class ProductManager {
 
-    Drink(int id, String name, BigDecimal price, Rating rating) {
-        super(id, name, price, rating);
+    public Product createProduct(int id, String name, BigDecimal price, Rating rating, LocalDate bestBefore) {
+        return new Food(id, name, price, rating, bestBefore);
     }
 
-    @Override
-    public Product applyRating(Rating newRating) {
-        return new Drink(getId(), getName(), getPrice(), newRating);
-    }
-
-    @Override
-    public BigDecimal getDiscount() {
-        LocalTime now = LocalTime.now();
-        return (now.isAfter(LocalTime.of(17, 30)) && now.isBefore(LocalTime.of(18, 30))) ? super.getDiscount() : BigDecimal.ZERO;
+    public Product createProduct(int id, String name, BigDecimal price, Rating rating) {
+        return new Drink(id, name, price, rating);
     }
 }

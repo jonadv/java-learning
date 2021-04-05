@@ -23,7 +23,7 @@ import java.time.LocalDate;
  *
  * @author Jonathan
  */
-public class Food extends Product {
+public final class Food extends Product {
 
     private LocalDate bestBefore;
 
@@ -37,7 +37,7 @@ public class Food extends Product {
         return bestBefore;
     }
 
-    public Food(int id, String name, BigDecimal price, Rating rating, LocalDate bestBefore) {
+    Food(int id, String name, BigDecimal price, Rating rating, LocalDate bestBefore) {
         super(id, name, price, rating);
         this.bestBefore = bestBefore;
     }
