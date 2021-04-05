@@ -41,4 +41,9 @@ public class Food extends Product {
         this.bestBefore = bestBefore;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + ", " + bestBefore ;
+    }
+
 }
