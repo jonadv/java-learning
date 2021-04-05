@@ -18,6 +18,7 @@ package labs.pm.data;
 
 import java.math.BigDecimal;
 import static java.math.RoundingMode.HALF_UP;
+import static labs.pm.data.Rating.*;
 
 /**
  * (@code Product) class represents properties and behaviours of product objects
@@ -44,7 +45,7 @@ public class Product {
      */
     public final static BigDecimal DISCOUNT_RATE = BigDecimal.valueOf(0.10);
     private Rating rating;
-    
+
     public int getId() {
         return id;
     }
@@ -82,6 +83,20 @@ public class Product {
     public Rating getRating() {
         return rating;
     }
-    
-    
+
+    public Product() {
+        this(0, "no name", BigDecimal.ZERO);
+    }
+
+    public Product(int id, String name, BigDecimal price, Rating rating) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.rating = rating;
+    }
+
+    public Product(int id, String name, BigDecimal price) {
+        this(id, name, price, NOT_RATED);
+    }
+
 }
