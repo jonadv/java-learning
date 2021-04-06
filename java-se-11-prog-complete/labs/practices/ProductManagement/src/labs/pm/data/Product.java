@@ -34,7 +34,7 @@ import static labs.pm.data.Rating.*;
  * @version 4.0
  * @author Jonathan
  */
-public abstract class Product {
+public abstract class Product implements Rateable<Product>{
 
     private final int id;
     private final String name;
@@ -70,6 +70,7 @@ public abstract class Product {
         return price.multiply(DISCOUNT_RATE).setScale(2, HALF_UP);
     }
 
+    @Override
     public Rating getRating() {
         return rating;
     }
@@ -97,8 +98,6 @@ public abstract class Product {
     Product(int id, String name, BigDecimal price) {
         this(id, name, price, NOT_RATED);
     }
-
-    public abstract Product applyRating(Rating newRating);
 
     @Override
     public String toString() {
