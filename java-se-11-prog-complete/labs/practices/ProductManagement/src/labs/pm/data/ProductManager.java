@@ -68,7 +68,7 @@ public class ProductManager {
                 reviews[i] = new Review(rating, comments);
                 reviewed = true;
             }
-            sum = reviews[i].getRating().ordinal();
+            sum += reviews[i].getRating().ordinal();
             i++;
         }
         Rating averageRating = Rateable.convert(Math.round((float) sum / i));
@@ -83,15 +83,21 @@ public class ProductManager {
                 moneyFormat.format(product.getPrice()),
                 product.getRating().getStars(),
                 dateFormat.format(product.getBestBefore())));
-        txt.append("\n");
-        if (review != null) {
+        txt.append('\n');
+        for (Review review : reviews) {
+            if (review == null) {
+                break;
+            }
             txt.append(MessageFormat.format(resources.getString("review"),
                     review.getRating().getStars(),
                     review.getComments()));
-        } else {
-            txt.append(resources.getString("no.review"));
+            txt.append('\n');
         }
-        txt.append("\n");
+        if (reviews[0] == null) {
+            txt.append(resources.getString("no.review"));
+            txt.append('\n');
+        }
+
         System.out.println(txt);
     }
 }
