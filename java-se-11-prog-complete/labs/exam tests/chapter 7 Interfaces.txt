@@ -1,0 +1,20 @@
+Test 7 - Correct answers
+Which statements are true? (choose three)
+- A default method can be defined only in an interface
+- A class can implement as many interfaces as required
+- Interfaces help solve the multiploe intheritance problem
+
+Which action to Generics allow?
+- Resolving specific type compilation
+
+Which statements are true (choose two)
+- An interface works with the instanceof operator
+- Both interface and class reference can be cast to either type
+
+What is an interface that defines a single abstarct operation called?
+- Functional
+
+Interfaces can contain concrete methods, but only if they are ___. (choose three)
+- default
+- static
+- private
