@@ -23,7 +23,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 /**
@@ -32,9 +35,8 @@ import java.util.ResourceBundle;
  */
 public class ProductManager {
 
-    private Product product;
-    private Review[] reviews = new Review[5];
-
+    private Map<Product,List<Review>> products = new HashMap<>();
+    
     private Locale locale;
     private ResourceBundle resources;
     private DateTimeFormatter dateFormat;
