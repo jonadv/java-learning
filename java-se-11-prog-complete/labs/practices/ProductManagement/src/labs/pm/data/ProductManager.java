@@ -22,6 +22,7 @@ import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -57,8 +58,21 @@ public class ProductManager {
     }
 
     public Product reviewProduct(Product product, Rating rating, String comments) {
-        this.review = new Review(rating, comments);
-        this.product = product.applyRating(rating);
+        if (reviews[reviews.length - 1] != null) {
+            reviews = Arrays.copyOf(reviews, reviews.length + 5);
+        }
+        int sum = 0, i = 0;
+        boolean reviewed = false;
+        while (i < reviews.length && !reviewed) {
+            if (reviews[i] == null) {
+                reviews[i] = new Review(rating, comments);
+                reviewed = true;
+            }
+            sum = reviews[i].getRating().ordinal();
+            i++;
+        }
+        Rating averageRating = Rateable.convert(Math.round((float) sum / i));
+        this.product = product.applyRating(averageRating);
         return this.product;
     }
 
