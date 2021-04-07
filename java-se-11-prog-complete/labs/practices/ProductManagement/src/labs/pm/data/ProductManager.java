@@ -40,7 +40,7 @@ public class ProductManager {
     private NumberFormat moneyFormat;
 
     public ProductManager(Locale locale) {
-        resources = ResourceBundle.getBundle("resources", locale);
+        resources = ResourceBundle.getBundle("labs.pm.data.resources", locale);
         dateFormat = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).localizedBy(locale);
         moneyFormat = NumberFormat.getCurrencyInstance(locale);
         this.locale = locale;
