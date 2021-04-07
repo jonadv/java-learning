@@ -32,7 +32,7 @@ import java.util.ResourceBundle;
 public class ProductManager {
 
     private Product product;
-    private Review review;
+    private Review[] reviews = new Review[5];
 
     private Locale locale;
     private ResourceBundle resources;
