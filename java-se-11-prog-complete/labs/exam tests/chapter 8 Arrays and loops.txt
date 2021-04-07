@@ -1,0 +1,22 @@
+Test 8 - Correct answers
+What will be the output?
+- Elizabeth Mary Jane Jo
+
+Which statements are true about an array? (Choose four)
+- is an object itself
+- it is a fixed-length collection of elements of the same type indexed by int
+- after an array is created, its length cannot be changed
+- an array of primitive values is filled with 0 values (false values if it is of boolean type)
+
+When breaking out of loops and skipping loop cycles, ____ skips the current loop and ____ terminates the current loop.
+- continue, break
+
+When processing an array in a loop, use array ____ to determine the boundary for the termination condition:
+- length
+
+String[] names = {"Mary","Jane","Ann","Tom"}; 
+Arrays.sort(names);
+int x = Arrays.binarySearch(names,"Ann");
+System.out.println(x);
+What is the value of x?
+- 0
