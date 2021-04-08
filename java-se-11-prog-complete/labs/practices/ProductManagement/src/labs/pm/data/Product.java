@@ -34,11 +34,8 @@ import static labs.pm.data.Rating.*;
  * @version 4.0
  * @author Jonathan
  */
-public abstract class Product implements Rateable<Product>{
+public abstract class Product implements Rateable<Product> {
 
-    private final int id;
-    private final String name;
-    private final BigDecimal price;
     /**
      * A constant that defines a {@link java.math.BigDecimal BigDecimal} value
      * of the discount rate
@@ -46,7 +43,24 @@ public abstract class Product implements Rateable<Product>{
      * Discount rate is 10%
      */
     public final static BigDecimal DISCOUNT_RATE = BigDecimal.valueOf(0.10);
+    private final int id;
+    private final String name;
+    private final BigDecimal price;
     private Rating rating;
+//    Product() {
+//        this(0, "no name", BigDecimal.ZERO);
+//    }
+
+    Product(int id, String name, BigDecimal price) {
+        this(id, name, price, NOT_RATED);
+    }
+
+    Product(int id, String name, BigDecimal price, Rating rating) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.rating = rating;
+    }
 
     public int getId() {
         return id;
@@ -75,7 +89,7 @@ public abstract class Product implements Rateable<Product>{
         return rating;
     }
 
-        /**
+    /**
      * Get the (default) value of the best before date of the product
      *
      * @return the value of bestBefore
@@ -83,25 +97,10 @@ public abstract class Product implements Rateable<Product>{
     public LocalDate getBestBefore() {
         return LocalDate.now();
     }
-    
-//    Product() {
-//        this(0, "no name", BigDecimal.ZERO);
-//    }
-
-    Product(int id, String name, BigDecimal price, Rating rating) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.rating = rating;
-    }
-
-    Product(int id, String name, BigDecimal price) {
-        this(id, name, price, NOT_RATED);
-    }
 
     @Override
     public String toString() {
-        return id + ", " + name + ", " + price + ", " + getDiscount() + ", " + rating.getStars() + ", "+ getBestBefore();
+        return id + ", " + name + ", " + price + ", " + getDiscount() + ", " + rating.getStars() + ", " + getBestBefore();
     }
 
     @Override
@@ -116,10 +115,9 @@ public abstract class Product implements Rateable<Product>{
         if (this == obj) {
             return true;
         }
-//        if (obj != null && getClass() == obj.getClass()) {
-        if (obj instanceof Product){
+        if (obj instanceof Product) {
             final Product other = (Product) obj;
-            return this.id == other.id && Objects.equals(this.name, other.name);
+            return this.id == other.id;  // && Objects.equals(this.name, other.name);
         }
         return false;
     }

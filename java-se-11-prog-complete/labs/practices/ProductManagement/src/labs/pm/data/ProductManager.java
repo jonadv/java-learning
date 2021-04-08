@@ -23,7 +23,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -37,28 +37,27 @@ import java.util.ResourceBundle;
 public class ProductManager {
 
     private Map<Product, List<Review>> products = new HashMap<>();
-
     private Locale locale;
     private ResourceBundle resources;
     private DateTimeFormatter dateFormat;
     private NumberFormat moneyFormat;
 
     public ProductManager(Locale locale) {
+        this.locale = locale;
         resources = ResourceBundle.getBundle("labs.pm.data.resources", locale);
         dateFormat = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).localizedBy(locale);
         moneyFormat = NumberFormat.getCurrencyInstance(locale);
-        this.locale = locale;
     }
 
     public Product createProduct(int id, String name, BigDecimal price, Rating rating, LocalDate bestBefore) {
         Product product = new Food(id, name, price, rating, bestBefore);
-        products.putIfAbsent(product, new ArrayList<>()); //uses overriden method equals in Product class
+        products.putIfAbsent(product, new ArrayList<Review>()); //uses overriden method equals in Product class
         return product;
     }
 
     public Product createProduct(int id, String name, BigDecimal price, Rating rating) {
         Product product = new Drink(id, name, price, rating);
-        products.putIfAbsent(product, new ArrayList<>()); //uses overriden method equals in Product class
+        products.putIfAbsent(product, new ArrayList<Review>()); //uses overriden method equals in Product class
         return product;
     }
 
@@ -70,31 +69,35 @@ public class ProductManager {
         for (Review review : reviews) {
             sum += review.getRating().ordinal();
         }
-        Rating averageRating = Rateable.convert(Math.round((float) sum / reviews.size()));
-        product = product.applyRating(averageRating);
+        product = product.applyRating(Rateable.convert(Math.round((float) sum / reviews.size())));
         products.put(product, reviews);
         System.out.println("aver rat: " + product.getRating().ordinal()); //always > 0
         return product;
     }
 
     public void printProductReport(Product product) {
-        StringBuilder txt = new StringBuilder();
         List<Review> reviews = products.get(product);
+        StringBuilder txt = new StringBuilder();
         System.out.println("final rat: " + product.getRating().ordinal()); //always = 0 ??????????????????????????????? 
         txt.append(MessageFormat.format(resources.getString("product"),
                 product.getName(),
                 moneyFormat.format(product.getPrice()),
                 product.getRating().getStars(),
-                dateFormat.format(product.getBestBefore())));
+                dateFormat.format(product.getBestBefore()))
+        );
         txt.append('\n');
         for (Review review : reviews) {
+            if (review == null) {
+                break;
+            }
             txt.append(MessageFormat.format(resources.getString("review"),
                     review.getRating().getStars(),
-                    review.getComments()));
+                    review.getComments())
+            );
             txt.append('\n');
         }
         if (reviews.isEmpty()) {
-            txt.append(resources.getString("no.review"));
+            txt.append(resources.getString("no.reviews"));
             txt.append('\n');
         }
 
