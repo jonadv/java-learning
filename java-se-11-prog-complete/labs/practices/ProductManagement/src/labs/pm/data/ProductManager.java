@@ -73,14 +73,14 @@ public class ProductManager {
         Rating averageRating = Rateable.convert(Math.round((float) sum / reviews.size()));
         product = product.applyRating(averageRating);
         products.put(product, reviews);
-        System.out.println("aver rat: " + product.getRating().ordinal()); //always > 0 ??????????????????????????????? 
+        System.out.println("aver rat: " + product.getRating().ordinal()); //always > 0
         return product;
     }
 
     public void printProductReport(Product product) {
         StringBuilder txt = new StringBuilder();
         List<Review> reviews = products.get(product);
-        System.out.println("final rat: " + product.getRating().ordinal()); //always 0 ??????????????????????????????? 
+        System.out.println("final rat: " + product.getRating().ordinal()); //always = 0 ??????????????????????????????? 
         txt.append(MessageFormat.format(resources.getString("product"),
                 product.getName(),
                 moneyFormat.format(product.getPrice()),
