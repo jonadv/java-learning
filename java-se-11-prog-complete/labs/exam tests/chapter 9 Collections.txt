@@ -1,0 +1,36 @@
+Test 9 - Correct answers
+
+Examine the following code:
+Map<Integer, String> items = new HashMap<>();
+items.put(Integer.valueOf(1),"Tea"); 
+items.put(Integer.valueOf(2),"Cake");
+Which statements are true? (Choose two)
+- items.put(Integer.valueOf(3),"Cake"); will create an additional element with a "Cake" value.
+- items.put(Integer.valueOf(1),"Coffee"); will replace "Tea" with "Coffee."
+
+Which statements are true about Deque? (Choose three)
+- Null values are not allowed.
+- Implementations of ArrayDeque will auto-expand.
+- offerFirst(T) and offerLast(T) insert elements at the head and the tail of the deque.
+
+Which statements are NOT true about the Java Collection API? (Choose two)
+- All collections are implemented internally by using arrays.
+- All collections provide thread-safe operations.
+
+Examine the following code:
+String[] arr = {"Tea","Cake"};
+List<String> texts = Arrays.asList(arr);
+Which statements are true? (Choose two)
+- You can replace Tea with Coffee in texts.
+- You can replace Tea with Coffee in arr.
+
+Which statement is true about Set?
+- Add and Remove methods will return false values when attempting to add a duplicate or remove an absent element.
+
+Examine the following code:
+Map<Integer, String> items = new HashMap<>();
+items.put(Integer.valueOf(1),"Tea"); 
+items.put(Integer.valueOf(2),"Cake");
+Which statements are true? (Choose two)
+- items.put(Integer.valueOf(1),"Coffee"); will replace "Tea" with "Coffee."
+- items.put(Integer.valueOf(3),"Cake"); will create an additional element with a "Cake" value.
