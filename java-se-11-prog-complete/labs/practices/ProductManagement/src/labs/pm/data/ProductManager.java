@@ -36,8 +36,8 @@ import java.util.ResourceBundle;
  */
 public class ProductManager {
 
-    private Map<Product,List<Review>> products = new HashMap<>();
-    
+    private Map<Product, List<Review>> products = new HashMap<>();
+
     private Locale locale;
     private ResourceBundle resources;
     private DateTimeFormatter dateFormat;
@@ -57,32 +57,30 @@ public class ProductManager {
     }
 
     public Product createProduct(int id, String name, BigDecimal price, Rating rating) {
-        Product product = new Drink(id, name, price, rating); 
+        Product product = new Drink(id, name, price, rating);
         products.putIfAbsent(product, new ArrayList<>()); //uses overriden method equals in Product class
         return product;
     }
 
     public Product reviewProduct(Product product, Rating rating, String comments) {
-        if (reviews[reviews.length - 1] != null) {
-            reviews = Arrays.copyOf(reviews, reviews.length + 5);
+        List<Review> reviews = products.get(product);
+        products.remove(product, reviews);
+        reviews.add(new Review(rating, comments));
+        int sum = 0;
+        for (Review review : reviews) {
+            sum += review.getRating().ordinal();
         }
-        int sum = 0, i = 0;
-        boolean reviewed = false;
-        while (i < reviews.length && !reviewed) {
-            if (reviews[i] == null) {
-                reviews[i] = new Review(rating, comments);
-                reviewed = true;
-            }
-            sum += reviews[i].getRating().ordinal();
-            i++;
-        }
-        Rating averageRating = Rateable.convert(Math.round((float) sum / i));
-        this.product = product.applyRating(averageRating);
-        return this.product;
+        Rating averageRating = Rateable.convert(Math.round((float) sum / reviews.size()));
+        product = product.applyRating(averageRating);
+        products.put(product, reviews);
+        System.out.println("aver rat: " + product.getRating().ordinal()); //always > 0 ??????????????????????????????? 
+        return product;
     }
 
-    public void printProductReport() {
+    public void printProductReport(Product product) {
         StringBuilder txt = new StringBuilder();
+        List<Review> reviews = products.get(product);
+        System.out.println("final rat: " + product.getRating().ordinal()); //always 0 ??????????????????????????????? 
         txt.append(MessageFormat.format(resources.getString("product"),
                 product.getName(),
                 moneyFormat.format(product.getPrice()),
@@ -90,15 +88,12 @@ public class ProductManager {
                 dateFormat.format(product.getBestBefore())));
         txt.append('\n');
         for (Review review : reviews) {
-            if (review == null) {
-                break;
-            }
             txt.append(MessageFormat.format(resources.getString("review"),
                     review.getRating().getStars(),
                     review.getComments()));
             txt.append('\n');
         }
-        if (reviews[0] == null) {
+        if (reviews.isEmpty()) {
             txt.append(resources.getString("no.review"));
             txt.append('\n');
         }

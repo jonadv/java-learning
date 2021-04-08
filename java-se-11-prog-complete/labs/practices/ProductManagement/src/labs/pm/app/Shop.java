@@ -40,7 +40,7 @@ public class Shop {
 
         ProductManager pm = new ProductManager(Locale.US);
         Product p1 = pm.createProduct(101, "Tea", BigDecimal.valueOf(1.99), NOT_RATED);
-        pm.printProductReport();
+        pm.printProductReport(p1);
 
         pm.reviewProduct(p1, FOUR_STAR, "Nice hot cup of tea");
         pm.reviewProduct(p1, THREE_STAR, "Ok tea");
@@ -48,7 +48,14 @@ public class Shop {
         pm.reviewProduct(p1, FIVE_STAR, "Perfect tea");
         pm.reviewProduct(p1, FIVE_STAR, "Finest cup of tea");
         pm.reviewProduct(p1, FIVE_STAR, "Pleasent");
-        pm.printProductReport();
+        pm.printProductReport(p1);
+        
+        Product p2 = pm.createProduct(101, "Coffee", BigDecimal.valueOf(1.99), NOT_RATED);
+        pm.reviewProduct(p2, FOUR_STAR, "Nice hot cup of coffee");
+        pm.reviewProduct(p2, THREE_STAR, "Ok coffee");
+        pm.reviewProduct(p2, THREE_STAR, "Fine coffee");
+        pm.reviewProduct(p2, FIVE_STAR, "Perfect coffee");
+        pm.printProductReport(p2);
     }
 
 }
