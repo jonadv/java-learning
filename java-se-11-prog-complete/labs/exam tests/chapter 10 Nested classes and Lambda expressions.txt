@@ -1,0 +1,14 @@
+Test 10 - Correct answers
+
+Which statements are true about an anonymous inner class? (Choose two)
+- It is an implementation of an interface or extension of a class.
+- It can access outer variables, but only if they are final or effectively final.
+
+Which statement is true about lambda expressions?
+- It is an inline implementation of a functional interface.
+
+With what is a member inner class associated?
+- Instance context of the containing class
+
+Why would you define classes inside other classes?
+- To encapsulate logic and constrain context of use
