@@ -84,6 +84,13 @@ public abstract class Product implements Rateable<Product> {
         return price.multiply(DISCOUNT_RATE).setScale(2, HALF_UP);
     }
 
+  
+    /**
+     * Get the average) of all Ratings of the Product
+     *
+     * @return {@link Rating} of the Product
+     */
+    
     @Override
     public Rating getRating() {
         return rating;

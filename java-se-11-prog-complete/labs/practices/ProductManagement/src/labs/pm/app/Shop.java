@@ -69,5 +69,7 @@ public class Shop {
         Predicate<Product> filter = (p1 -> p1.getPrice().floatValue() > 2.0f); //compareTo(BigDecimal.valueOf(1.0)) > -1);
         pm.printProducts(filter, ratingSorter);
         pm.printProducts(filter, priceSorter.thenComparing(ratingSorter).reversed());
+        
+        pm.getDiscounts().forEach((rating, discount) -> System.out.println(rating+"\t"+discount));
     }
 }

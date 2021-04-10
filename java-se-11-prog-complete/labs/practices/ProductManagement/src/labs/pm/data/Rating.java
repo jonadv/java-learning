@@ -17,7 +17,9 @@
 package labs.pm.data;
 
 /**
- *
+ * (@code Rating) class represents enum rating of a product
+ * 
+ * @version 4.0
  * @author Jonathan
  */
 public enum Rating {
