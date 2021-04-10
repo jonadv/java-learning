@@ -19,6 +19,7 @@ package labs.pm.app;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Comparator;
+import java.util.function.Predicate;
 import java.util.Locale;
 import labs.pm.data.Drink;
 import labs.pm.data.Food;
@@ -65,7 +66,8 @@ public class Shop {
 
         Comparator<Product> ratingSorter = (p1, p2) -> p2.getRating().ordinal() - p1.getRating().ordinal();
         Comparator<Product> priceSorter = (p1, p2) -> p2.getPrice().compareTo(p1.getPrice());
-        pm.printProducts(ratingSorter);
-        pm.printProducts(priceSorter.thenComparing(ratingSorter).reversed());
+        Predicate<Product> filter = (p1 -> p1.getPrice().floatValue() > 2.0f); //compareTo(BigDecimal.valueOf(1.0)) > -1);
+        pm.printProducts(filter, ratingSorter);
+        pm.printProducts(filter, priceSorter.thenComparing(ratingSorter).reversed());
     }
 }
