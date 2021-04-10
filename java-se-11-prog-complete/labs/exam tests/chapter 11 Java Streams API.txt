@@ -1,0 +1,14 @@
+Test 11 - Correct answers
+
+Which statement is NOT true about Java Streams?
+- Pipeline traversal occurs starting with the first stream method encountered.
+
+Which statement is true about intermediate stream operations?
+- They perform an action and produce another stream.
+
+What would you use while processing a stream to replace every element in a stream with a different value?
+- Function
+
+What kind of interface does the filter method in a stream accept?
+- Predicate
+
