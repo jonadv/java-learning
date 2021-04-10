@@ -27,3 +27,11 @@ hs_err_pid*
 /java-se-11-prog-complete/labs/practices/ProductManagement/nbproject/private/
 /java-se-11-prog-complete/labs/practices/ProductManagement/build/
 /java-se-11-prog-complete/labs/practices/ProductManagement/dist/
+
+# only test files of test folder
+!/just-testing/nbproject/src/
+/just-testing/nbproject/
+/just-testing/build/
+/just-testing/build.xml
+/just-testing/manifest.mf
+
