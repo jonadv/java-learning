@@ -1,0 +1,17 @@
+Test 12 - Correct answers
+
+What happens when an exception is raised?
+- Normal program flow is terminated.
+
+Which statement is true about the Java Logging API?
+- You can apply different log levels to different log targets.
+
+What are the common uses of custom exceptions? (Choose two)
+- Providing an error message
+- Providing constructors that utilize superclass constructor abilities
+
+The most commonly used logging method takes at least two parameters. Which parameters are they?
+- Level and message
+
+Which statement is true about checked exceptions?
+- The must be caught or must be explicitly propagated.
