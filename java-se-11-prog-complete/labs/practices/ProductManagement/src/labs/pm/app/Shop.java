@@ -43,13 +43,13 @@ public class Shop {
         ProductManager pm = new ProductManager("nl-NL");
         pm.createProduct(101, "Tea", BigDecimal.valueOf(6.99), NOT_RATED);
 
-        pm.reviewProduct(101, FOUR_STAR, "Nice hot cup of tea");
+        pm.reviewProduct(42, FOUR_STAR, "Nice hot cup of tea");
         pm.reviewProduct(101, THREE_STAR, "Ok tea");
         pm.reviewProduct(101, THREE_STAR, "Fine tea");
         pm.reviewProduct(101, FIVE_STAR, "Perfect tea");
         pm.reviewProduct(101, FIVE_STAR, "Finest cup of tea");
         pm.reviewProduct(101, FIVE_STAR, "Pleasent");
-//        pm.printProductReport(101);
+//        pm.printProductReport(42);
 
         pm.createProduct(102, "Coffee", BigDecimal.valueOf(1.99), NOT_RATED);
         pm.reviewProduct(102, FOUR_STAR, "Nice hot cup of coffee");
@@ -62,7 +62,7 @@ public class Shop {
         pm.reviewProduct(103, FIVE_STAR, "Very nice cake");
         pm.reviewProduct(103, FOUR_STAR, "It's good, but I've expected more chocolate");
         pm.reviewProduct(103, FIVE_STAR, "This cake is perfect!");
-//        pm.printProductReport(103);
+//        pm.printProductReport(108);
 
         Comparator<Product> ratingSorter = (p1, p2) -> p2.getRating().ordinal() - p1.getRating().ordinal();
         Comparator<Product> priceSorter = (p1, p2) -> p2.getPrice().compareTo(p1.getPrice());

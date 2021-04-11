@@ -33,6 +33,7 @@ import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.NoSuchElementException;
 
 /**
  *
@@ -102,7 +103,7 @@ public class ProductManager {
                 .stream()
                 .filter(p -> p.getId() == id)
                 .findFirst()
-                .orElseGet(() -> null);
+                .get();
     }
 
     public void printProductReport(int id) {
