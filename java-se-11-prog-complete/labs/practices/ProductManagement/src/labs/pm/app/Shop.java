@@ -42,14 +42,14 @@ public class Shop {
 
         ProductManager pm = new ProductManager("nl-NL");
         pm.createProduct(101, "Tea", BigDecimal.valueOf(6.99), NOT_RATED);
-
+        pm.printProductReport(42);
         pm.reviewProduct(42, FOUR_STAR, "Nice hot cup of tea");
         pm.reviewProduct(101, THREE_STAR, "Ok tea");
         pm.reviewProduct(101, THREE_STAR, "Fine tea");
         pm.reviewProduct(101, FIVE_STAR, "Perfect tea");
         pm.reviewProduct(101, FIVE_STAR, "Finest cup of tea");
         pm.reviewProduct(101, FIVE_STAR, "Pleasent");
-//        pm.printProductReport(42);
+        pm.printProductReport(42);
 
         pm.createProduct(102, "Coffee", BigDecimal.valueOf(1.99), NOT_RATED);
         pm.reviewProduct(102, FOUR_STAR, "Nice hot cup of coffee");
