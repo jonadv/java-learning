@@ -35,3 +35,5 @@ hs_err_pid*
 /just-testing/build.xml
 /just-testing/manifest.mf
 
+#config path
+configpaths.properties

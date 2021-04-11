@@ -16,7 +16,13 @@
  */
 package labs.pm.data;
 
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.text.MessageFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -31,6 +37,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -47,6 +54,10 @@ public class ProductManager {
     private Map<Product, List<Review>> products = new HashMap<>();
     private ResourceFormatter formatter;
     private ResourceBundle config = ResourceBundle.getBundle("labs.pm.data.config");
+    private ResourceBundle configPath = ResourceBundle.getBundle("labs.pm.data.configpaths");
+    private Path reportsFolder = Path.of(configPath.getString("reports.folder"));
+    private Path dataFolder = Path.of(configPath.getString("data.folder"));
+    private Path tempFolder = Path.of(configPath.getString("temp.folder"));
     private MessageFormat productFormat = new MessageFormat(config.getString("product.data.format"));
     private MessageFormat reviewFormat = new MessageFormat(config.getString("review.data.format"));
     private static Map<String, ResourceFormatter> formatters = Map.of(
@@ -123,26 +134,33 @@ public class ProductManager {
             printProductReport(findProduct(id));
         } catch (ProductManagerException ex) {
             logger.log(Level.INFO, ex.getMessage());
+        } catch (IOException ex) {
+            logger.log(Level.SEVERE, "Error printing product report (product id: " + id+")", ex);
+        } catch (MissingResourceException e){
+            logger.log(Level.SEVERE, "Missing resource (see config*.properties): " + id+")", e);
         }
 
     }
 
-    public void printProductReport(Product product) {
+    public void printProductReport(Product product) throws IOException {
         List<Review> reviews = products.get(product);
         Collections.sort(reviews);
-        StringBuilder txt = new StringBuilder();
-        txt.append(formatter.formatProduct(product));
-        txt.append('\n');
-        if (reviews.isEmpty()) {
-            txt.append(formatter.getText("no.reviews"));
-            txt.append('\n');
-        } else {
-            txt.append(
-                    reviews.stream()
-                            .map((review) -> formatter.formatReview(review) + '\n')
-                            .collect(Collectors.joining()));
+        
+        Path productFile = reportsFolder.resolve(MessageFormat.format(config.getString("report.file"), product.getId()));
+        try (PrintWriter out = new PrintWriter(new OutputStreamWriter(Files.newOutputStream(productFile, StandardOpenOption.CREATE), "UTF-8"))) {
+            out.append(formatter.formatProduct(product));
+            out.append(System.lineSeparator());
+            if (reviews.isEmpty()) {
+                out.append(formatter.getText("no.reviews"));
+                out.append(System.lineSeparator());
+            } else {
+                out.append(
+                        reviews.stream()
+                                .map((review) -> formatter.formatReview(review) + '\n')
+                                .collect(Collectors.joining()));
+            }
+//            System.out.println(txt);
         }
-        System.out.println(txt);
     }
 
     public void printProducts(Predicate<Product> filter, Comparator<Product> sorted) {
@@ -175,7 +193,7 @@ public class ProductManager {
             String name = (String) values[2];
             BigDecimal price = BigDecimal.valueOf(Double.parseDouble((String) values[3]));
             Rating rating = Rateable.convert(Integer.parseInt((String) values[4]));
-            switch((String) values[0]){
+            switch ((String) values[0]) {
                 case "D":
                     createProduct(id, name, price, rating);
                     break;

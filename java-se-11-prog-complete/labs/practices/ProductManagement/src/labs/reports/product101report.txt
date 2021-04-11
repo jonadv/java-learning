@@ -1,0 +1,8 @@
+Tea, Price: £6.99, Rating: ★★★★☆, Best before: 11/04/2021
+Review: ★★★★★	Perfect tea
+Review: ★★★★★	Finest cup of tea
+Review: ★★★★★	Pleasent
+Review: ★★★★☆	Nice hot cup of tea
+Review: ★★★☆☆	Nice hot cup of tea
+Review: ★★★☆☆	Fine tea
+Review: ★★☆☆☆	Ok tea
