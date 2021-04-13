@@ -1,8 +1,6 @@
-Tea, Price: £6.99, Rating: ★★★★★, Best before: 11/04/2021
-Review: ★★★★★	Perfect tea
-Review: ★★★★★	Finest cup of tea
-Review: ★★★★★	Pleasent
-Review: ★★★★☆	Nice hot cup of tea
-Review: ★★★☆☆	Nice hot cup of tea
-Review: ★★★☆☆	Fine tea
-Review: ★★☆☆☆	Ok tea
+English Breakfast Tea (nr 101), Price: £1.99, Rating: ☆☆☆☆☆, Best before: 13/04/2021
+Review: ★★★★★	This is the best one I ever had
+Review: ★★★★☆	I liked it
+Review: ★★★★☆	Good choice
+Review: ★★★☆☆	Could have been better
+Review: ★★☆☆☆	Very small - expected more

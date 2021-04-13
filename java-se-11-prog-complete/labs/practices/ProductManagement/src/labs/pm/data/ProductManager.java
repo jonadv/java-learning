@@ -76,6 +76,7 @@ public class ProductManager {
 
     public ProductManager(String languageTag) {
         changeLocale(languageTag);
+        loadAllData();
     }
 
     public void changeLocale(String languageTag) {
@@ -173,6 +174,33 @@ public class ProductManager {
         System.out.println(txt);
     }
 
+    private void loadAllData() {
+        try {
+            products = Files.list(dataFolder)
+                    .filter(file -> file.getFileName().toString().startsWith("product"))
+                    .map(file -> loadProduct(file))
+                    .filter(product -> product != null)
+                    .collect(Collectors.toMap(product -> product,
+                            product -> loadReviews(product)));
+            //this is exactly as is shown in example video, but average is not recalculated and added to products.
+            //products are loaded before reviews, so reviews can get assigned to products. 
+            //however, after parsing of reviews is completed, an average of the reviews
+            //is not recalculated again. Coudl be done by calling applyRating 
+        } catch (IOException ex) {
+            logger.log(Level.SEVERE, "Error loading data " + ex.getMessage());
+        }
+    }
+
+    private Product loadProduct(Path file) {
+        Product product = null;
+        try {
+            product = parseProduct(Files.lines(dataFolder.resolve(file), Charset.forName("UTF-8")).findFirst().orElseThrow());
+        } catch (Exception ex) {
+            logger.log(Level.WARNING, "Error loading product " + ex.getMessage());
+        }
+        return product;
+    }
+
     private List<Review> loadReviews(Product product) {
         List<Review> reviews = null;
         Path file = dataFolder.resolve(MessageFormat.format(config.getString("reviews.data.file"), product.getId()));
@@ -191,19 +219,8 @@ public class ProductManager {
         return reviews;
     }
 
-    private Product loadProduct(Path file) {
-        Product product = null;
-        try {
-            product = parseProduct(Files.lines(dataFolder.resolve(file), Charset.forName("UTF-8")).findFirst().orElseThrow());
-        } catch (IOException ex) {
-            logger.log(Level.WARNING, "Error loading product "+ ex.getMessage());
-        }
-        return product;
-    }
-
-    public Review parseReview(String text) {
+    private Review parseReview(String text) {
         Review review = null;
-
         try {
             Object[] values = reviewFormat.parse(text);
             review = new Review(
@@ -215,7 +232,7 @@ public class ProductManager {
         return review;
     }
 
-    public Product parseProduct(String text) {
+    private Product parseProduct(String text) {
         Product product = null;
         try {
             Object[] values = productFormat.parse(text);
@@ -273,7 +290,7 @@ public class ProductManager {
 
         private String formatProduct(Product product) {
             return MessageFormat.format(getText("product"),
-                    product.getName(),
+                    (product.getName() + " (nr " + product.getId()+")"),
                     moneyFormat.format(product.getPrice()),
                     product.getRating().getStars(),
                     dateFormat.format(product.getBestBefore()));

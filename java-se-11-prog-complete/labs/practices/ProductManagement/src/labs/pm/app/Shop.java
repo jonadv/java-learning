@@ -41,31 +41,13 @@ public class Shop {
     public static void main(String[] args) {
 
         ProductManager pm = new ProductManager("gb-GB");
-        pm.createProduct(101, "Tea", BigDecimal.valueOf(6.99), NOT_RATED);
-        pm.parseReview("101,4,Nice hot cup of tea");
-//        pm.reviewProduct(42, FOUR_STAR, "Nice hot cup of tea");
-        pm.parseReview("101,3,Nice hot cup of tea");
-        pm.parseReview("101,3,Fine tea");
-        pm.parseReview("101,2,Ok tea");
-        pm.reviewProduct(101, FIVE_STAR, "Perfect tea");
-        pm.reviewProduct(101, FIVE_STAR, "Finest cup of tea");
-        pm.reviewProduct(101, FIVE_STAR, "Pleasent");
-        pm.printProductReport(101);
-
-        pm.createProduct(102, "Coffee", BigDecimal.valueOf(1.99), NOT_RATED);
-        pm.reviewProduct(102, FOUR_STAR, "Nice hot cup of coffee");
-        pm.reviewProduct(102, TWO_STAR, "Ok coffee");
-        pm.reviewProduct(102, THREE_STAR, "Fine coffee");
-        pm.reviewProduct(102, FIVE_STAR, "Perfect coffee");
-//        pm.printProductReport(102);
-
-//        pm.createProduct(103, "Cake", BigDecimal.valueOf(3.99), NOT_RATED, LocalDate.now().plusDays(2));
-        pm.parseProduct("F,103,Cake,3.99,0,2021-06-20");
-        pm.reviewProduct(103, FIVE_STAR, "Very nice cake");
-        pm.reviewProduct(103, FOUR_STAR, "It's good, but I've expected more chocolate");
-        pm.reviewProduct(103, FIVE_STAR, "This cake is perfect!");
-        pm.printProductReport(103);
-
+//        pm.createProduct(101, "Tea", BigDecimal.valueOf(6.99), NOT_RATED);
+//        pm.reviewProduct(101, FIVE_STAR, "Perfect tea");
+//        pm.reviewProduct(101, FIVE_STAR, "Finest cup of tea");
+//        pm.reviewProduct(101, FIVE_STAR, "Pleasent");
+            for (var i=100; i<164;i++){
+                pm.printProductReport(i);
+            }
         Comparator<Product> ratingSorter = (p1, p2) -> p2.getRating().ordinal() - p1.getRating().ordinal();
         Comparator<Product> priceSorter = (p1, p2) -> p2.getPrice().compareTo(p1.getPrice());
         Predicate<Product> filter = (p1 -> p1.getPrice().floatValue() > 2.0f); //compareTo(BigDecimal.valueOf(1.0)) > -1);
