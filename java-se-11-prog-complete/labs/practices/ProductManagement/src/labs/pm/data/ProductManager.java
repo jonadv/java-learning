@@ -182,13 +182,25 @@ public class ProductManager {
                     .filter(product -> product != null)
                     .collect(Collectors.toMap(product -> product,
                             product -> loadReviews(product)));
-            //this is exactly as is shown in example video, but average is not recalculated and added to products.
-            //products are loaded before reviews, so reviews can get assigned to products. 
-            //however, after parsing of reviews is completed, an average of the reviews
-            //is not recalculated again. Coudl be done by calling applyRating 
+            recalcAverageProductRatings();
         } catch (IOException ex) {
             logger.log(Level.SEVERE, "Error loading data " + ex.getMessage());
         }
+    }
+
+    private void recalcAverageProductRatings() {
+        Map<Product, List<Review>> newProducts = new HashMap<>();
+        products.forEach((product, reviews) -> {
+            product = product.applyRating(
+                    Rateable.convert(
+                            (int) Math.round(
+                                    reviews.stream()
+                                            .mapToInt((review) -> review.getRating().ordinal())
+                                            .average()
+                                            .orElse(0))));
+            newProducts.put(product, reviews);
+        });
+        products = newProducts;
     }
 
     private Product loadProduct(Path file) {
@@ -290,7 +302,7 @@ public class ProductManager {
 
         private String formatProduct(Product product) {
             return MessageFormat.format(getText("product"),
-                    (product.getName() + " (nr " + product.getId()+")"),
+                    (product.getName() + " (nr " + product.getId() + ")"),
                     moneyFormat.format(product.getPrice()),
                     product.getRating().getStars(),
                     dateFormat.format(product.getBestBefore()));

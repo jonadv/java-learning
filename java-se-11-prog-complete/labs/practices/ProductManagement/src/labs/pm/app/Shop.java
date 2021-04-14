@@ -45,7 +45,7 @@ public class Shop {
 //        pm.reviewProduct(101, FIVE_STAR, "Perfect tea");
 //        pm.reviewProduct(101, FIVE_STAR, "Finest cup of tea");
 //        pm.reviewProduct(101, FIVE_STAR, "Pleasent");
-            for (var i=100; i<164;i++){
+            for (var i=100; i<107;i++){
                 pm.printProductReport(i);
             }
         Comparator<Product> ratingSorter = (p1, p2) -> p2.getRating().ordinal() - p1.getRating().ordinal();
