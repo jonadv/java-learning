@@ -41,19 +41,6 @@ public class Shop {
     public static void main(String[] args) {
 
         ProductManager pm = new ProductManager("gb-GB");
-//        pm.createProduct(101, "Tea", BigDecimal.valueOf(6.99), NOT_RATED);
-//        pm.reviewProduct(101, FIVE_STAR, "Perfect tea");
-//        pm.reviewProduct(101, FIVE_STAR, "Finest cup of tea");
-//        pm.reviewProduct(101, FIVE_STAR, "Pleasent");
-            for (var i=100; i<107;i++){
-                pm.printProductReport(i);
-            }
-        Comparator<Product> ratingSorter = (p1, p2) -> p2.getRating().ordinal() - p1.getRating().ordinal();
-        Comparator<Product> priceSorter = (p1, p2) -> p2.getPrice().compareTo(p1.getPrice());
-        Predicate<Product> filter = (p1 -> p1.getPrice().floatValue() > 2.0f); //compareTo(BigDecimal.valueOf(1.0)) > -1);
-        pm.printProducts(filter, ratingSorter);
-        pm.printProducts(filter, priceSorter.thenComparing(ratingSorter).reversed());
 
-        pm.getDiscounts().forEach((rating, discount) -> System.out.println(rating + "\t" + discount));
     }
 }
