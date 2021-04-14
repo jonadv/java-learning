@@ -40,7 +40,8 @@ public class Shop {
      */
     public static void main(String[] args) {
 
-        ProductManager pm = new ProductManager("gb-GB");
-
+        ProductManager pm = ProductManager.getInstance();
+        ProductManager pm2 = ProductManager.getInstance();
+        pm.printProductReport(101, "en-GB");
     }
 }
