@@ -1,0 +1,16 @@
+Test 13 correct answers
+
+Which statement is NOT true about java.nio.file classes?
+- Class Path allows you to set file system object properties.
+
+Which statement is NOT true about serialization?
+- Serialization is a suitable solution for long-term data storage.
+
+Assume that a file system has an empty folder /users/joe and the following code:
+Path backup = Path.of("/users/joe/backup/docs");
+Files.createDirectory(backup);
+What is the result?
+- It will throw an exception.
+
+Which is NOT a basis for categorizing Java I/O Streams?
+- Whether it is serial or parallel
