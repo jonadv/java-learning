@@ -42,6 +42,5 @@ public class Shop {
 
         ProductManager pm = ProductManager.getInstance();
         ProductManager pm2 = ProductManager.getInstance();
-        pm.printProductReport(101, "en-GB");
     }
 }
