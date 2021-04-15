@@ -1,0 +1,18 @@
+Test 14 correct answers
+
+What is the state of two threads waiting on each other in a synchronized block called?
+- Deadlock
+
+When you catch the InterruptedException, into which state does it put the thread?
+- RUNNABLE
+
+Which statement is true about threads?
+- The order in which threads terminate is indeterminate.
+
+Which are valid thread state transitions? (Choose two)
+- NEW to RUNNABLE
+- RUNNABLE to BLOCKED
+
+Which are valid mechanisms to implement threads? (Choose two)
+- Instantiate a Runnable object.
+- Schedule a thread to run.
