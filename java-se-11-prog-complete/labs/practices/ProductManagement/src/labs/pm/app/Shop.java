@@ -16,16 +16,11 @@
  */
 package labs.pm.app;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Comparator;
-import java.util.function.Predicate;
-import java.util.Locale;
-import labs.pm.data.Drink;
-import labs.pm.data.Food;
-import labs.pm.data.Product;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 import labs.pm.data.ProductManager;
-import static labs.pm.data.Rating.*;
 
 /**
  * (@code Shop) class represents an application that manages Products
@@ -39,8 +34,26 @@ public class Shop {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+        AtomicInteger clientCount = new AtomicInteger(0);
         ProductManager pm = ProductManager.getInstance();
-        ProductManager pm2 = ProductManager.getInstance();
+        Callable<String> client = () -> {
+            String clientId = "Client " + clientCount.incrementAndGet();
+            String treadName = Thread.currentThread().getName();
+            int productId = ThreadLocalRandom.current().nextInt(63) + 101;
+            String languageTag = ProductManager.getSupportedLocales()
+                    .stream()
+                    .skip(ThreadLocalRandom.current().nextInt(6))
+                    .findFirst().get();
+            StringBuilder log = new StringBuilder();
+            log.append(clientId + treadName + "\n-\tstart of log\t-\n");
+            log.append(pm.getDiscounts(languageTag)
+                    .entrySet()
+                    .stream()
+                    .map(entry -> entry.getKey() + "\t" + entry.getValue())
+                    .collect(Collectors.joining("\n")));
+            log.append(clientId + treadName + "\n-\tend of log\t-\n");
+            return log.toString();
+        };
+
     }
 }
