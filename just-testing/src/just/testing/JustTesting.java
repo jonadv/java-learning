@@ -13,8 +13,13 @@ public class JustTesting {
         
     void passFood(Food f){ //no ClassCastException for rice_rice as argument
         f.eat();
-//        f = (Food) f; //doenst change the class type (!!! and no ClassCastException for rice_rice !!!)
+//        f = (Food) f; //never errors, doenst change the class type (!!! and no ClassCastException for rice_rice !!!)
 //        System.out.println(f.toString());
+        if (f instanceof Rice){
+            f = (Rice) f; //local variable can be casted           
+//            f.eatRice(); //not accessible as of dynimic binding
+            new Rice().eatRice();
+        }
     }
     void passRice(Rice f){
         f.eat();
