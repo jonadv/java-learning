@@ -1,0 +1,7 @@
+ICECREAM_102 (nr 102), Prijs: ￥8.99, Beoordeling: ★★★☆☆, Houdbaar tot: 2022/1/1
+Beoordeling: ★★★★☆	Yet another review
+Beoordeling: ★★★☆☆	 Fizzy
+Beoordeling: ★★★☆☆	 Ok
+Beoordeling: ★★★☆☆	 Hot
+Beoordeling: ★★☆☆☆	 Good
+Beoordeling: ★☆☆☆☆	 Fizzy

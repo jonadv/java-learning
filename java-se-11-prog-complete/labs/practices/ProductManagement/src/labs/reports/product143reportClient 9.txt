@@ -1,0 +1,7 @@
+ICECREAM_143 (nr 143), Price: £1.99, Rating: ★★★☆☆, Best before: 20/04/2021
+Review: ★★★★★	 Hot
+Review: ★★★★☆	 Ok
+Review: ★★★★☆	Yet another review
+Review: ★★★☆☆	 Good
+Review: ★★★☆☆	 Fizzy
+Review: ★☆☆☆☆	 Not Bad

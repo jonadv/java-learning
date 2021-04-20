@@ -1,0 +1,7 @@
+SHAKE_156 (nr 156), Price: £10.99, Rating: ★★★★☆, Best before: 01/01/2022
+Review: ★★★★★	 Fizzy
+Review: ★★★★★	 Not Bad
+Review: ★★★★★	 Not Bad
+Review: ★★★★☆	Yet another review
+Review: ★★★☆☆	 Good
+Review: ★☆☆☆☆	 Good

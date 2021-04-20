@@ -49,7 +49,7 @@ public class Shop {
         Callable<String> client = () -> {
             String clientId = "Client " + clientCount.incrementAndGet();
             String treadName = Thread.currentThread().getName();
-            int productId = ThreadLocalRandom.current().nextInt(63) + 101;
+            int productId = ThreadLocalRandom.current().nextInt(63) + 101; 
             String languageTag = ProductManager.getSupportedLocales()
                     .stream()
                     .skip(ThreadLocalRandom.current().nextInt(6))
@@ -72,7 +72,7 @@ public class Shop {
         };
 
         List<Callable<String>> clients = Stream.generate(() -> client)
-                .limit(5)
+                .limit(10)
                 .collect(Collectors.toList());
         ExecutorService executorService = Executors.newFixedThreadPool(3);
         try {

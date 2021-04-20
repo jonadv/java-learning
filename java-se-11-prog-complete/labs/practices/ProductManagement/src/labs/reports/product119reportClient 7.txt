@@ -1,0 +1,7 @@
+SHAKE_119 (nr 119), Price: £4.99, Rating: ★★★★☆, Best before: 01/01/2022
+Review: ★★★★★	 Fizzy
+Review: ★★★★☆	 Fizzy
+Review: ★★★★☆	 Good
+Review: ★★★★☆	 Ok
+Review: ★★★★☆	Yet another review
+Review: ★★★☆☆	 Hot
