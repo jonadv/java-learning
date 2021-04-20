@@ -1,0 +1,16 @@
+Test 15 correct answers
+
+Which statements are true? (Choose three)
+- Classes of a given package must all be within the same module.
+- Packages provide the logical grouping of classes.
+- All public classes are hidden access unless the containing package is explicitly exported.
+
+Which statement is true about modules?
+- The "opens" directive enables class reflection in the corresponding module.
+
+Which statements are true about services? (Choose two)
+- A service consumer references a service module with the "requires" directive.
+- A service provider references a service module with the "requires" directive.
+
+When legacy JAR files are placed into the module path, what are they treated as?
+- Automatic
