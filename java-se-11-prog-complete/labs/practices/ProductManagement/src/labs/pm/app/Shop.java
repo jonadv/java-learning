@@ -16,6 +16,12 @@
  */
 package labs.pm.app;
 
+import io.helidon.common.http.Http;
+import io.helidon.webserver.Routing;
+import io.helidon.webserver.ServerConfiguration;
+import io.helidon.webserver.WebServer;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -30,6 +36,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import labs.pm.data.Product;
 import labs.pm.data.ProductManager;
+import labs.pm.data.ProductManagerException;
 import labs.pm.data.Rating;
 
 /**
@@ -39,16 +46,17 @@ import labs.pm.data.Rating;
  * @author Jonathan
  */
 public class Shop {
-    /**
-     * @param args the command line arguments
-     */
+    
+    private static final Logger logger = Logger.getLogger(Shop.class.getName());
+    
     public static void main(String[] args) {
         AtomicInteger clientCount = new AtomicInteger(0);
         ProductManager pm = ProductManager.getInstance();
+        
         Callable<String> client = () -> {
             String clientId = "Client " + clientCount.incrementAndGet();
             String treadName = Thread.currentThread().getName();
-            int productId = ThreadLocalRandom.current().nextInt(63) + 101; 
+            int productId = ThreadLocalRandom.current().nextInt(63) + 101;
             String languageTag = ProductManager.getSupportedLocales()
                     .stream()
                     .skip(ThreadLocalRandom.current().nextInt(6))
@@ -81,12 +89,38 @@ public class Shop {
                 try {
                     System.out.println(result.get());
                 } catch (InterruptedException | ExecutionException ex) {
-                    Logger.getLogger(Shop.class.getName()).log(Level.SEVERE, "Error retrieving client log", ex);
+                    logger.log(Level.SEVERE, "Error retrieving client log", ex);
                 }
             });
         } catch (InterruptedException ex) {
-            Logger.getLogger(Shop.class.getName()).log(Level.SEVERE, "Error invoking clients", ex);
+            logger.log(Level.SEVERE, "Error invoking clients", ex);
         }
 
+        try {
+            ServerConfiguration config = ServerConfiguration.builder()
+                    .bindAddress(InetAddress.getLocalHost())
+                    .port(8888).build();
+            Routing routing = Routing.builder()
+                    .any("/", (request, response) -> {
+                        response.status(200)
+                                .send("Specify id to retrieve product information");
+                    })
+                    .get("/{id}", (request, response) -> {
+                        String result = null;
+                        try{
+                            result = pm.findProduct(Integer.parseInt(request.path().param("id"))).toString();
+                        } catch (ProductManagerException ex){
+                            logger.log(Level.WARNING, ex.getMessage());
+                            result = "Product with id "+request.path().param("id") + " not found";
+                        }
+                        response.status(Http.Status.OK_200);
+                        response.headers().put("Content-Type", "text/plain; charset=UTF-8");
+                        response.send(result);
+                    }).build();
+            WebServer ws = WebServer.create(config, routing);
+            ws.start();
+        } catch (UnknownHostException ex) {
+            logger.log(Level.WARNING, ex.getMessage());
+        }
     }
 }

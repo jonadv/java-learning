@@ -29,3 +29,5 @@ hs_err_pid*
 #config path
 configpaths.properties
 /just-testing/dist/
+/java-explorer/ShopApp/dist/
+/java-se-11-prog-complete/labs/practices/ProductManagement/dist/

@@ -17,4 +17,5 @@
 
 module labs.pm {
     requires java.logging;
+    requires io.helidon.webserver;
 }
