@@ -39,7 +39,6 @@ import labs.pm.data.Rating;
  * @author Jonathan
  */
 public class Shop {
-
     /**
      * @param args the command line arguments
      */
