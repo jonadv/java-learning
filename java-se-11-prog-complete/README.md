@@ -1,3 +1,6 @@
+See commit History for files as they where in between the lessons: https://github.com/jonadv/java-learning/commits/main/java-se-11-prog-complete
+See Exam test answers for the answers on the practice questions in between: https://github.com/jonadv/java-learning/tree/main/java-se-11-prog-complete/labs/exam%20tests
+
 NAME: 
 
 Java SE 11: Programming Complete
