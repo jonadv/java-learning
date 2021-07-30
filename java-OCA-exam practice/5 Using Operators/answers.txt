@@ -1,0 +1,40 @@
+Anwers excercises chapter 5 Using Operaters
+Excercises Chapter 5
+
+1. Work out the values of the variables after each of the following statements on paper: 
+String str = "7" + 5 + 10; 	//7510
+str = 7 + 5 + "10"; 		//1210
+str = "7" + (5 + 10); 		//715
+
+int m = 50;		
+in n = ++m;								//m=51, n=51			
+int o = m--; 							//o = 51, m = 50
+int p = --o + m--; 						//o=50, m=49, p=98
+int x = m < n? n < o? o < p? p:o:n:m; 	//49<51? n<o? o<p? p:o:n:m;
+										//true? 51<50? o<p? p:o:n:m;
+										//true? false? o<p? p:o:n:m;
+										//true? false? o<p? p:o:51:m;
+										//x = 51
+										
+int k = 4; 									
+boolean flag = k + + = = 5; //4++==5 -> 4==5 -> false, k=5
+flag = !flag; 				//true
+
+2. Which of the following lines will fail to compile and why? Write down the value of the variables after each line. 
+byte b = 1;
+b = b < < 1; 			//wont compile cause result is an int
+int c = b < < 1; 		//c=4
+byte d + = b; 			//+= cant be used in declaration
+byte e = 0; 			
+e + = b; 				//if b shift is properly casted then e=2
+ 
+ 3. What will the following code print and why? 
+String s = "a"; 
+String[] sa = 	{ "a", s, s.substring( 0, 1), new String("a"), "" +'a' }; 
+for( int i = 0; i < sa.length; i++){ 
+	System.out.println( i); 
+	System.out.println( s == sa[ i]); 
+	System.out.println( s.equals( sa[i])); 
+}
+//sa is now {a,a,a, new a,a}
+//will print "a true true" for all, except the fourth it will print "a false true" as it is not a string from the string pool.

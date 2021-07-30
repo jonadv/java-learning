@@ -31,3 +31,6 @@ configpaths.properties
 /just-testing/dist/
 /java-explorer/ShopApp/dist/
 /java-se-11-prog-complete/labs/practices/ProductManagement/dist/
+/TestModules/nbproject/private/
+/TestModules/build/
+/TestModules/dist/

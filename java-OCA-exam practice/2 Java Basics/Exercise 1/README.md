@@ -1,0 +1,1 @@
+Create classes in two different named packages. Define static and instance fields in one of those classes and access those fields from the other class. See what happens when both the classes try to access the fields of each other. Hint: If you have trouble compiling classes, check out "Compilation and Execution" section in Kickstarter for Beginners".
