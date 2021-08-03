@@ -3,11 +3,11 @@ package test;
 3. Create a class named Student with a few fields such as studentId, name, and address. Should these fields be static or non-static? Add the main method to this class and access the fields from the main method. 
 */
 
-class Student{
+public class Student{
 	//fields should not be static
-	String studentId;
-	String name;
-	String adress;
+	public String studentId;
+	public String name;
+	public String adress;
 	
 	/*
 	4. Add a static field to Student class. Access this field from another class. Use appropriate import statement to access the field directly. Change accessibility of the field and see its impact on the code that tries to access it. 
@@ -25,7 +25,7 @@ class Student{
 	}
 	
 	Student(){
-		Student("000"+ (++count), "student", "street");
+		this("000"+ (++count), "student", "street");
 		System.out.println("New student created. Id of new student = "+studentId);
 	}
 	

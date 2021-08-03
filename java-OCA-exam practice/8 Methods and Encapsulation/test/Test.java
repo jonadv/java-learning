@@ -1,5 +1,6 @@
 package test;
 import static test.Student.school;
+import other.Course;
 
 class Test{
 	public static void main(String[] arg){
@@ -56,7 +57,15 @@ class Test{
 	/*
 	6. Add a constructor in Student class that accepts values for all of its instance fields. Add a no-args constructor in Student class that makes use of the first constructor to set all its instance fields to dummy values. 
 	*/
+	print("\nExercise 6, constructors: ");
+	s = new Student();
+	print("New student, with default values created.");
 	
+	/*
+	7. Create a class named Course in different package. Add a static method named enroll in this class that accepts a Student. Use different access modifiers for fields of Student class and try to access them from the enroll method.
+	*/
+	print("\nExercise 7, enroll student: ");
+	Course.enroll(s);
 	
 	}
 	
