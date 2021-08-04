@@ -40,12 +40,12 @@ Exercises Chapter 12 Working with Selected classes from the Java API
 	k -> k>5
 	
 15. Given the following interfaces, create lambda expressions that can be used to capture these interfaces.
-interface Shape {
-	double computeArea();
-}
-interface Operation {
-	void operate(String name, double[] params);
-}
+	interface Shape {
+		double computeArea();
+	}
+	interface Operation {
+		void operate(String name, double[] params);
+	}
 
 16. Write a method that takes a list of Image objects and a Predicate as arguments, and returns another list containing only those Images that satisfy the predicate. 
 
