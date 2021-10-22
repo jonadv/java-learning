@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CityInfoAPI.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace CityInfoAPI.Controllers
 {
@@ -108,6 +109,47 @@ namespace CityInfoAPI.Controllers
 
             pointOfInterestFromStore.Name = pointOfInterest.Name;
             pointOfInterestFromStore.Description = pointOfInterest.Description;
+            return NoContent();
+        }
+
+        [HttpPatch("{id}")]
+        public IActionResult ParticallyUpdatePointOfInterest(int cityId, int id,
+            [FromBody] JsonPatchDocument<PointOfInterestForUpdateDto> patchDocument)
+        {
+            var city = CitiesDataStore.Current.Cities
+                .FirstOrDefault(c => c.Id == cityId);
+            if (city == null) {
+                return NotFound();
+            }
+
+            var pointOfInterestFromStore = city.PointsOfInterest
+                .FirstOrDefault(c => c.Id == id);
+            if (pointOfInterestFromStore == null) {
+                return NotFound();
+            }
+
+            var pointOfInterestToPatch = new PointOfInterestForUpdateDto() {
+                Name = pointOfInterestFromStore.Name, Description = pointOfInterestFromStore.Description
+            };
+
+            patchDocument.ApplyTo(pointOfInterestToPatch, ModelState);
+            if (!ModelState.IsValid) {
+                return BadRequest(ModelState);
+            }
+
+            if (pointOfInterestToPatch.Description == pointOfInterestToPatch.Name) {
+                ModelState.AddModelError(
+                    "Description",
+                    "Description can't be the same as Name property.");
+            }
+
+            if (!TryValidateModel(pointOfInterestToPatch)) {
+                return BadRequest(ModelState);
+            }
+
+            pointOfInterestFromStore.Name = pointOfInterestToPatch.Name;
+            pointOfInterestFromStore.Description = pointOfInterestToPatch.Description;
+
             return NoContent();
         }
 

@@ -18,6 +18,9 @@ namespace CityInfoAPI
         {
             services.AddMvc(options => options.EnableEndpointRouting = false);
             //services.AddMvc();
+            services
+                .AddControllersWithViews()
+                .AddNewtonsoftJson();
         }
 
 
